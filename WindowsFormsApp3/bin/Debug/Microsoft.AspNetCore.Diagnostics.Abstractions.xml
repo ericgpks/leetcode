@@ -9,6 +9,27 @@
             Describes a failure compiling a specific file.
             </summary>
         </member>
+        <member name="M:Microsoft.AspNetCore.Diagnostics.CompilationFailure.#ctor(System.String,System.String,System.String,System.Collections.Generic.IEnumerable{Microsoft.AspNetCore.Diagnostics.DiagnosticMessage})">
+            <summary>
+            Initializes a new instance of <see cref="T:Microsoft.AspNetCore.Diagnostics.CompilationFailure"/>.
+            </summary>
+            <param name="sourceFilePath">Path for the file that produced the compilation failure.</param>
+            <param name="sourceFileContent">Contents of the file being compiled.</param>
+            <param name="compiledContent">For templated languages (such as Asp.Net Core Razor), the generated content.
+            </param>
+            <param name="messages">One or or more <see cref="T:Microsoft.AspNetCore.Diagnostics.DiagnosticMessage"/> instances.</param>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Diagnostics.CompilationFailure.#ctor(System.String,System.String,System.String,System.Collections.Generic.IEnumerable{Microsoft.AspNetCore.Diagnostics.DiagnosticMessage},System.String)">
+            <summary>
+            Initializes a new instance of <see cref="T:Microsoft.AspNetCore.Diagnostics.CompilationFailure"/>.
+            </summary>
+            <param name="sourceFilePath">Path for the file that produced the compilation failure.</param>
+            <param name="sourceFileContent">Contents of the file being compiled.</param>
+            <param name="compiledContent">For templated languages (such as Asp.Net Core Razor), the generated content.
+            </param>
+            <param name="messages">One or or more <see cref="T:Microsoft.AspNetCore.Diagnostics.DiagnosticMessage"/> instances.</param>
+            <param name="failureSummary">Summary message or instructions to fix the failure.</param>
+        </member>
         <member name="P:Microsoft.AspNetCore.Diagnostics.CompilationFailure.SourceFilePath">
             <summary>
             Path of the file that produced the compilation failure.
@@ -32,6 +53,11 @@
         <member name="P:Microsoft.AspNetCore.Diagnostics.CompilationFailure.Messages">
             <summary>
             Gets a sequence of <see cref="T:Microsoft.AspNetCore.Diagnostics.DiagnosticMessage"/> produced as a result of compilation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Diagnostics.CompilationFailure.FailureSummary">
+            <summary>
+            Summary message or instructions to fix the failure.
             </summary>
         </member>
         <member name="T:Microsoft.AspNetCore.Diagnostics.DiagnosticMessage">
@@ -86,6 +112,17 @@
         <member name="P:Microsoft.AspNetCore.Diagnostics.ICompilationException.CompilationFailures">
             <summary>
             Gets a sequence of <see cref="T:Microsoft.AspNetCore.Diagnostics.CompilationFailure"/> with compilation failures.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Diagnostics.IExceptionHandlerPathFeature">
+            <summary>
+            Represents an exception handler with the original path of the request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Diagnostics.IExceptionHandlerPathFeature.Path">
+            <summary>
+            The portion of the request path that identifies the requested resource. The value
+            is un-escaped.
             </summary>
         </member>
         <member name="T:Microsoft.AspNetCore.Diagnostics.IStatusCodePagesFeature">

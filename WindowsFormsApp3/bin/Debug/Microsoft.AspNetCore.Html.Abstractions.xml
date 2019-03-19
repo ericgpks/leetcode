@@ -20,6 +20,11 @@
             </summary>
             <param name="capacity">The initial capacity of the backing store.</param>
         </member>
+        <member name="P:Microsoft.AspNetCore.Html.HtmlContentBuilder.Count">
+            <summary>
+            Gets the number of elements in the <see cref="T:Microsoft.AspNetCore.Html.HtmlContentBuilder"/>.
+            </summary>
+        </member>
         <member name="M:Microsoft.AspNetCore.Html.HtmlContentBuilder.#ctor(System.Collections.Generic.IList{System.Object})">
             <summary>
             Creates a new <see cref="T:Microsoft.AspNetCore.Html.HtmlContentBuilder"/> with the given list of entries.

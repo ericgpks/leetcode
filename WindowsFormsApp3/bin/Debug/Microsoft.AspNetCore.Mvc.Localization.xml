@@ -4,157 +4,21 @@
         <name>Microsoft.AspNetCore.Mvc.Localization</name>
     </assembly>
     <members>
-        <member name="M:Microsoft.Extensions.Internal.PropertyHelper.#ctor(System.Reflection.PropertyInfo)">
-            <summary>
-            Initializes a fast <see cref="T:Microsoft.Extensions.Internal.PropertyHelper"/>.
-            This constructor does not cache the helper. For caching, use <see cref="M:Microsoft.Extensions.Internal.PropertyHelper.GetProperties(System.Object)"/>.
-            </summary>
-        </member>
-        <member name="P:Microsoft.Extensions.Internal.PropertyHelper.Property">
-            <summary>
-            Gets the backing <see cref="T:System.Reflection.PropertyInfo"/>.
-            </summary>
-        </member>
-        <member name="P:Microsoft.Extensions.Internal.PropertyHelper.Name">
-            <summary>
-            Gets (or sets in derived types) the property name.
-            </summary>
-        </member>
-        <member name="P:Microsoft.Extensions.Internal.PropertyHelper.ValueGetter">
-            <summary>
-            Gets the property value getter.
-            </summary>
-        </member>
-        <member name="P:Microsoft.Extensions.Internal.PropertyHelper.ValueSetter">
-            <summary>
-            Gets the property value setter.
-            </summary>
-        </member>
-        <member name="M:Microsoft.Extensions.Internal.PropertyHelper.GetValue(System.Object)">
-            <summary>
-            Returns the property value for the specified <paramref name="instance"/>.
-            </summary>
-            <param name="instance">The object whose property value will be returned.</param>
-            <returns>The property value.</returns>
-        </member>
-        <member name="M:Microsoft.Extensions.Internal.PropertyHelper.SetValue(System.Object,System.Object)">
-            <summary>
-            Sets the property value for the specified <paramref name="instance" />.
-            </summary>
-            <param name="instance">The object whose property value will be set.</param>
-            <param name="value">The property value.</param>
-        </member>
-        <member name="M:Microsoft.Extensions.Internal.PropertyHelper.GetProperties(System.Object)">
-            <summary>
-            Creates and caches fast property helpers that expose getters for every public get property on the
-            underlying type.
-            </summary>
-            <param name="instance">the instance to extract property accessors for.</param>
-            <returns>a cached array of all public property getters from the underlying type of target instance.
-            </returns>
-        </member>
-        <member name="M:Microsoft.Extensions.Internal.PropertyHelper.GetProperties(System.Type)">
-            <summary>
-            Creates and caches fast property helpers that expose getters for every public get property on the
-            specified type.
-            </summary>
-            <param name="type">the type to extract property accessors for.</param>
-            <returns>a cached array of all public property getters from the type of target instance.
-            </returns>
-        </member>
-        <member name="M:Microsoft.Extensions.Internal.PropertyHelper.GetVisibleProperties(System.Object)">
-            <summary>
-            <para>
-            Creates and caches fast property helpers that expose getters for every non-hidden get property
-            on the specified type.
-            </para>
-            <para>
-            <see cref="M:GetVisibleProperties"/> excludes properties defined on base types that have been
-            hidden by definitions using the <c>new</c> keyword.
-            </para>
-            </summary>
-            <param name="instance">The instance to extract property accessors for.</param>
-            <returns>
-            A cached array of all public property getters from the instance's type.
-            </returns>
-        </member>
-        <member name="M:Microsoft.Extensions.Internal.PropertyHelper.GetVisibleProperties(System.Type)">
-            <summary>
-            <para>
-            Creates and caches fast property helpers that expose getters for every non-hidden get property
-            on the specified type.
-            </para>
-            <para>
-            <see cref="M:GetVisibleProperties"/> excludes properties defined on base types that have been
-            hidden by definitions using the <c>new</c> keyword.
-            </para>
-            </summary>
-            <param name="type">The type to extract property accessors for.</param>
-            <returns>
-            A cached array of all public property getters from the type.
-            </returns>
-        </member>
-        <member name="M:Microsoft.Extensions.Internal.PropertyHelper.MakeFastPropertyGetter(System.Reflection.PropertyInfo)">
-            <summary>
-            Creates a single fast property getter. The result is not cached.
-            </summary>
-            <param name="propertyInfo">propertyInfo to extract the getter for.</param>
-            <returns>a fast getter.</returns>
-            <remarks>
-            This method is more memory efficient than a dynamically compiled lambda, and about the
-            same speed.
-            </remarks>
-        </member>
-        <member name="M:Microsoft.Extensions.Internal.PropertyHelper.MakeNullSafeFastPropertyGetter(System.Reflection.PropertyInfo)">
-            <summary>
-            Creates a single fast property getter which is safe for a null input object. The result is not cached.
-            </summary>
-            <param name="propertyInfo">propertyInfo to extract the getter for.</param>
-            <returns>a fast getter.</returns>
-            <remarks>
-            This method is more memory efficient than a dynamically compiled lambda, and about the
-            same speed.
-            </remarks>
-        </member>
-        <member name="M:Microsoft.Extensions.Internal.PropertyHelper.MakeFastPropertySetter(System.Reflection.PropertyInfo)">
-            <summary>
-            Creates a single fast property setter for reference types. The result is not cached.
-            </summary>
-            <param name="propertyInfo">propertyInfo to extract the setter for.</param>
-            <returns>a fast getter.</returns>
-            <remarks>
-            This method is more memory efficient than a dynamically compiled lambda, and about the
-            same speed. This only works for reference types.
-            </remarks>
-        </member>
-        <member name="M:Microsoft.Extensions.Internal.PropertyHelper.ObjectToDictionary(System.Object)">
-             <summary>
-             Given an object, adds each instance property with a public get method as a key and its
-             associated value to a dictionary.
-            
-             If the object is already an <see cref="T:System.Collections.Generic.IDictionary`2"/> instance, then a copy
-             is returned.
-             </summary>
-             <remarks>
-             The implementation of PropertyHelper will cache the property accessors per-type. This is
-             faster when the the same type is used multiple times with ObjectToDictionary.
-             </remarks>
-        </member>
         <member name="T:Microsoft.Extensions.DependencyInjection.MvcLocalizationMvcBuilderExtensions">
             <summary>
-            Extension methods for configuring MVC view localization.
+            Extension methods for configuring MVC view and data annotations localization services.
             </summary>
         </member>
         <member name="M:Microsoft.Extensions.DependencyInjection.MvcLocalizationMvcBuilderExtensions.AddViewLocalization(Microsoft.Extensions.DependencyInjection.IMvcBuilder)">
             <summary>
-            Adds MVC view localization to the application.
+            Adds MVC view localization services to the application.
             </summary>
             <param name="builder">The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcBuilder"/>.</param>
             <returns>The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcBuilder"/>.</returns>
         </member>
         <member name="M:Microsoft.Extensions.DependencyInjection.MvcLocalizationMvcBuilderExtensions.AddViewLocalization(Microsoft.Extensions.DependencyInjection.IMvcBuilder,Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat)">
             <summary>
-             Adds MVC view localization to the application.
+             Adds MVC view localization services to the application.
             </summary>
             <param name="builder">The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcBuilder"/>.</param>
             <param name="format">The view format for localized views.</param>
@@ -162,7 +26,7 @@
         </member>
         <member name="M:Microsoft.Extensions.DependencyInjection.MvcLocalizationMvcBuilderExtensions.AddViewLocalization(Microsoft.Extensions.DependencyInjection.IMvcBuilder,System.Action{Microsoft.Extensions.Localization.LocalizationOptions})">
             <summary>
-             Adds MVC view localization to the application.
+             Adds MVC view localization services to the application.
             </summary>
             <param name="builder">The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcBuilder"/>.</param>
             <param name="setupAction">An action to configure the <see cref="T:Microsoft.Extensions.Localization.LocalizationOptions"/>.</param>
@@ -170,24 +34,139 @@
         </member>
         <member name="M:Microsoft.Extensions.DependencyInjection.MvcLocalizationMvcBuilderExtensions.AddViewLocalization(Microsoft.Extensions.DependencyInjection.IMvcBuilder,Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat,System.Action{Microsoft.Extensions.Localization.LocalizationOptions})">
             <summary>
-             Adds MVC view localization to the application.
+             Adds MVC view localization services to the application.
             </summary>
             <param name="builder">The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcBuilder"/>.</param>
             <param name="format">The view format for localized views.</param>
             <param name="setupAction">An action to configure the <see cref="T:Microsoft.Extensions.Localization.LocalizationOptions"/>.</param>
             <returns>The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcBuilder"/>.</returns>
         </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MvcLocalizationMvcBuilderExtensions.AddMvcLocalization(Microsoft.Extensions.DependencyInjection.IMvcBuilder)">
+            <summary>
+            Adds MVC view and data annotations localization services to the application.
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcBuilder"/>.</param>
+            <returns>The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcBuilder"/>.</returns>
+            <remarks>
+            Adding localization also adds support for views via
+            <see cref="M:Microsoft.Extensions.DependencyInjection.MvcViewFeaturesMvcCoreBuilderExtensions.AddViews(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)"/> and the Razor view engine
+            via <see cref="M:Microsoft.Extensions.DependencyInjection.MvcRazorMvcCoreBuilderExtensions.AddRazorViewEngine(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)"/>.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MvcLocalizationMvcBuilderExtensions.AddMvcLocalization(Microsoft.Extensions.DependencyInjection.IMvcBuilder,System.Action{Microsoft.Extensions.Localization.LocalizationOptions})">
+            <summary>
+            Adds MVC view and data annotations localization services to the application.
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcBuilder"/>.</param>
+            <param name="localizationOptionsSetupAction">An action to configure the <see cref="T:Microsoft.Extensions.Localization.LocalizationOptions"/>.</param>
+            <returns>The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcBuilder"/>.</returns>
+            <remarks>
+            Adding localization also adds support for views via
+            <see cref="M:Microsoft.Extensions.DependencyInjection.MvcViewFeaturesMvcCoreBuilderExtensions.AddViews(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)"/> and the Razor view engine
+            via <see cref="M:Microsoft.Extensions.DependencyInjection.MvcRazorMvcCoreBuilderExtensions.AddRazorViewEngine(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)"/>.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MvcLocalizationMvcBuilderExtensions.AddMvcLocalization(Microsoft.Extensions.DependencyInjection.IMvcBuilder,Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat)">
+            <summary>
+            Adds MVC view and data annotations localization services to the application.
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcBuilder"/>.</param>
+            <param name="format">The view format for localized views.</param>
+            <returns>The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcBuilder"/>.</returns>
+            <remarks>
+            Adding localization also adds support for views via
+            <see cref="M:Microsoft.Extensions.DependencyInjection.MvcViewFeaturesMvcCoreBuilderExtensions.AddViews(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)"/> and the Razor view engine
+            via <see cref="M:Microsoft.Extensions.DependencyInjection.MvcRazorMvcCoreBuilderExtensions.AddRazorViewEngine(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)"/>.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MvcLocalizationMvcBuilderExtensions.AddMvcLocalization(Microsoft.Extensions.DependencyInjection.IMvcBuilder,System.Action{Microsoft.Extensions.Localization.LocalizationOptions},Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat)">
+            <summary>
+            Adds MVC view and data annotations localization services to the application.
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcBuilder"/>.</param>
+            <param name="localizationOptionsSetupAction">An action to configure the
+            <see cref="T:Microsoft.Extensions.Localization.LocalizationOptions"/>.</param>
+            <param name="format">The view format for localized views.</param>
+            <returns>The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcBuilder"/>.</returns>
+            <remarks>
+            Adding localization also adds support for views via
+            <see cref="M:Microsoft.Extensions.DependencyInjection.MvcViewFeaturesMvcCoreBuilderExtensions.AddViews(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)"/> and the Razor view engine
+            via <see cref="M:Microsoft.Extensions.DependencyInjection.MvcRazorMvcCoreBuilderExtensions.AddRazorViewEngine(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)"/>.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MvcLocalizationMvcBuilderExtensions.AddMvcLocalization(Microsoft.Extensions.DependencyInjection.IMvcBuilder,System.Action{Microsoft.AspNetCore.Mvc.DataAnnotations.MvcDataAnnotationsLocalizationOptions})">
+            <summary>
+            Adds MVC view and data annotations localization services to the application.
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcBuilder"/>.</param>
+            <param name="dataAnnotationsLocalizationOptionsSetupAction">An action to configure the
+            <see cref="T:Microsoft.AspNetCore.Mvc.DataAnnotations.MvcDataAnnotationsLocalizationOptions"/>.</param>
+            <returns>The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcBuilder"/>.</returns>
+            <remarks>
+            Adding localization also adds support for views via
+            <see cref="M:Microsoft.Extensions.DependencyInjection.MvcViewFeaturesMvcCoreBuilderExtensions.AddViews(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)"/> and the Razor view engine
+            via <see cref="M:Microsoft.Extensions.DependencyInjection.MvcRazorMvcCoreBuilderExtensions.AddRazorViewEngine(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)"/>.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MvcLocalizationMvcBuilderExtensions.AddMvcLocalization(Microsoft.Extensions.DependencyInjection.IMvcBuilder,System.Action{Microsoft.Extensions.Localization.LocalizationOptions},System.Action{Microsoft.AspNetCore.Mvc.DataAnnotations.MvcDataAnnotationsLocalizationOptions})">
+            <summary>
+            Adds MVC view and data annotations localization services to the application.
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcBuilder"/>.</param>
+            <param name="localizationOptionsSetupAction">An action to configure the
+            <see cref="T:Microsoft.Extensions.Localization.LocalizationOptions"/>.</param>
+            <param name="dataAnnotationsLocalizationOptionsSetupAction">An action to configure the
+            <see cref="T:Microsoft.AspNetCore.Mvc.DataAnnotations.MvcDataAnnotationsLocalizationOptions"/>.</param>
+            <returns>The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcBuilder"/>.</returns>
+            <remarks>
+            Adding localization also adds support for views via
+            <see cref="M:Microsoft.Extensions.DependencyInjection.MvcViewFeaturesMvcCoreBuilderExtensions.AddViews(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)"/> and the Razor view engine
+            via <see cref="M:Microsoft.Extensions.DependencyInjection.MvcRazorMvcCoreBuilderExtensions.AddRazorViewEngine(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)"/>.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MvcLocalizationMvcBuilderExtensions.AddMvcLocalization(Microsoft.Extensions.DependencyInjection.IMvcBuilder,Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat,System.Action{Microsoft.AspNetCore.Mvc.DataAnnotations.MvcDataAnnotationsLocalizationOptions})">
+            <summary>
+            Adds MVC view and data annotations localization services to the application.
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcBuilder"/>.</param>
+            <param name="format">The view format for localized views.</param>
+            <param name="dataAnnotationsLocalizationOptionsSetupAction">An action to configure the
+            <see cref="T:Microsoft.AspNetCore.Mvc.DataAnnotations.MvcDataAnnotationsLocalizationOptions"/>.</param>
+            <returns>The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcBuilder"/>.</returns>
+            <remarks>
+            Adding localization also adds support for views via
+            <see cref="M:Microsoft.Extensions.DependencyInjection.MvcViewFeaturesMvcCoreBuilderExtensions.AddViews(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)"/> and the Razor view engine
+            via <see cref="M:Microsoft.Extensions.DependencyInjection.MvcRazorMvcCoreBuilderExtensions.AddRazorViewEngine(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)"/>.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MvcLocalizationMvcBuilderExtensions.AddMvcLocalization(Microsoft.Extensions.DependencyInjection.IMvcBuilder,System.Action{Microsoft.Extensions.Localization.LocalizationOptions},Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat,System.Action{Microsoft.AspNetCore.Mvc.DataAnnotations.MvcDataAnnotationsLocalizationOptions})">
+            <summary>
+            Adds MVC view and data annotations localization services to the application.
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcBuilder"/>.</param>
+            <param name="localizationOptionsSetupAction">An action to configure the <see cref="T:Microsoft.Extensions.Localization.LocalizationOptions"/>.
+            Can be <c>null</c>.</param>
+            <param name="format">The view format for localized views.</param>
+            <param name="dataAnnotationsLocalizationOptionsSetupAction">An action to configure 
+            the <see cref="T:Microsoft.AspNetCore.Mvc.DataAnnotations.MvcDataAnnotationsLocalizationOptions"/>. Can be <c>null</c>.</param>
+            <returns>The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcBuilder"/>.</returns>
+            <remarks>
+            Adding localization also adds support for views via
+            <see cref="M:Microsoft.Extensions.DependencyInjection.MvcViewFeaturesMvcCoreBuilderExtensions.AddViews(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)"/> and the Razor view engine
+            via <see cref="M:Microsoft.Extensions.DependencyInjection.MvcRazorMvcCoreBuilderExtensions.AddRazorViewEngine(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)"/>.
+            </remarks>
+        </member>
         <member name="T:Microsoft.Extensions.DependencyInjection.MvcLocalizationMvcCoreBuilderExtensions">
             <summary>
-            Extension methods for configuring MVC view localization.
+            Extension methods for configuring MVC view and data annotations localization services.
             </summary>
         </member>
         <member name="M:Microsoft.Extensions.DependencyInjection.MvcLocalizationMvcCoreBuilderExtensions.AddViewLocalization(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)">
             <summary>
-            Adds MVC localization to the application.
+            Adds MVC view localization services to the application.
             </summary>
-            <param name="builder">The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcBuilder"/>.</param>
-            <returns>The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcBuilder"/>.</returns>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder"/>.</param>
+            <returns>The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder"/>.</returns>
             <remarks>
             Adding localization also adds support for views via
             <see cref="M:Microsoft.Extensions.DependencyInjection.MvcViewFeaturesMvcCoreBuilderExtensions.AddViews(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)"/> and the Razor view engine
@@ -196,11 +175,11 @@
         </member>
         <member name="M:Microsoft.Extensions.DependencyInjection.MvcLocalizationMvcCoreBuilderExtensions.AddViewLocalization(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder,Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat)">
             <summary>
-             Adds MVC localization to the application.
+             Adds MVC view localization services to the application.
             </summary>
-            <param name="builder">The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcBuilder"/>.</param>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder"/>.</param>
             <param name="format">The view format for localized views.</param>
-            <returns>The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcBuilder"/>.</returns>
+            <returns>The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder"/>.</returns>
             <remarks>
             Adding localization also adds support for views via
             <see cref="M:Microsoft.Extensions.DependencyInjection.MvcViewFeaturesMvcCoreBuilderExtensions.AddViews(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)"/> and the Razor view engine
@@ -209,11 +188,11 @@
         </member>
         <member name="M:Microsoft.Extensions.DependencyInjection.MvcLocalizationMvcCoreBuilderExtensions.AddViewLocalization(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder,System.Action{Microsoft.Extensions.Localization.LocalizationOptions})">
             <summary>
-            Adds MVC localization to the application.
+            Adds MVC view localization services to the application.
             </summary>
-            <param name="builder">The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcBuilder"/>.</param>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder"/>.</param>
             <param name="setupAction">An action to configure the <see cref="T:Microsoft.Extensions.Localization.LocalizationOptions"/>.</param>
-            <returns>The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcBuilder"/>.</returns>
+            <returns>The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder"/>.</returns>
             <remarks>
             Adding localization also adds support for views via
             <see cref="M:Microsoft.Extensions.DependencyInjection.MvcViewFeaturesMvcCoreBuilderExtensions.AddViews(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)"/> and the Razor view engine
@@ -222,12 +201,127 @@
         </member>
         <member name="M:Microsoft.Extensions.DependencyInjection.MvcLocalizationMvcCoreBuilderExtensions.AddViewLocalization(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder,Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat,System.Action{Microsoft.Extensions.Localization.LocalizationOptions})">
             <summary>
-             Adds MVC localization to the application.
+             Adds MVC view localization services to the application.
             </summary>
-            <param name="builder">The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcBuilder"/>.</param>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder"/>.</param>
             <param name="format">The view format for localized views.</param>
             <param name="setupAction">An action to configure the <see cref="T:Microsoft.Extensions.Localization.LocalizationOptions"/>.</param>
-            <returns>The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcBuilder"/>.</returns>
+            <returns>The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder"/>.</returns>
+            <remarks>
+            Adding localization also adds support for views via
+            <see cref="M:Microsoft.Extensions.DependencyInjection.MvcViewFeaturesMvcCoreBuilderExtensions.AddViews(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)"/> and the Razor view engine
+            via <see cref="M:Microsoft.Extensions.DependencyInjection.MvcRazorMvcCoreBuilderExtensions.AddRazorViewEngine(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)"/>.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MvcLocalizationMvcCoreBuilderExtensions.AddMvcLocalization(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)">
+            <summary>
+            Adds MVC view and data annotations localization services to the application.
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder"/>.</param>
+            <returns>The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder"/>.</returns>
+            <remarks>
+            Adding localization also adds support for views via
+            <see cref="M:Microsoft.Extensions.DependencyInjection.MvcViewFeaturesMvcCoreBuilderExtensions.AddViews(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)"/> and the Razor view engine
+            via <see cref="M:Microsoft.Extensions.DependencyInjection.MvcRazorMvcCoreBuilderExtensions.AddRazorViewEngine(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)"/>.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MvcLocalizationMvcCoreBuilderExtensions.AddMvcLocalization(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder,System.Action{Microsoft.Extensions.Localization.LocalizationOptions})">
+            <summary>
+            Adds MVC view and data annotations localization services to the application.
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder"/>.</param>
+            <param name="localizationOptionsSetupAction">An action to configure the <see cref="T:Microsoft.Extensions.Localization.LocalizationOptions"/>.</param>
+            <returns>The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder"/>.</returns>
+            <remarks>
+            Adding localization also adds support for views via
+            <see cref="M:Microsoft.Extensions.DependencyInjection.MvcViewFeaturesMvcCoreBuilderExtensions.AddViews(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)"/> and the Razor view engine
+            via <see cref="M:Microsoft.Extensions.DependencyInjection.MvcRazorMvcCoreBuilderExtensions.AddRazorViewEngine(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)"/>.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MvcLocalizationMvcCoreBuilderExtensions.AddMvcLocalization(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder,Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat)">
+            <summary>
+            Adds MVC view and data annotations localization services to the application.
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder"/>.</param>
+            <param name="format">The view format for localized views.</param>
+            <returns>The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder"/>.</returns>
+            <remarks>
+            Adding localization also adds support for views via
+            <see cref="M:Microsoft.Extensions.DependencyInjection.MvcViewFeaturesMvcCoreBuilderExtensions.AddViews(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)"/> and the Razor view engine
+            via <see cref="M:Microsoft.Extensions.DependencyInjection.MvcRazorMvcCoreBuilderExtensions.AddRazorViewEngine(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)"/>.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MvcLocalizationMvcCoreBuilderExtensions.AddMvcLocalization(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder,System.Action{Microsoft.Extensions.Localization.LocalizationOptions},Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat)">
+            <summary>
+            Adds MVC view and data annotations localization services to the application.
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder"/>.</param>
+            <param name="localizationOptionsSetupAction">An action to configure the
+            <see cref="T:Microsoft.Extensions.Localization.LocalizationOptions"/>.</param>
+            <param name="format">The view format for localized views.</param>
+            <returns>The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder"/>.</returns>
+            <remarks>
+            Adding localization also adds support for views via
+            <see cref="M:Microsoft.Extensions.DependencyInjection.MvcViewFeaturesMvcCoreBuilderExtensions.AddViews(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)"/> and the Razor view engine
+            via <see cref="M:Microsoft.Extensions.DependencyInjection.MvcRazorMvcCoreBuilderExtensions.AddRazorViewEngine(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)"/>.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MvcLocalizationMvcCoreBuilderExtensions.AddMvcLocalization(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder,System.Action{Microsoft.AspNetCore.Mvc.DataAnnotations.MvcDataAnnotationsLocalizationOptions})">
+            <summary>
+            Adds MVC view and data annotations localization services to the application.
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder"/>.</param>
+            <param name="dataAnnotationsLocalizationOptionsSetupAction">An action to configure
+            the <see cref="T:Microsoft.AspNetCore.Mvc.DataAnnotations.MvcDataAnnotationsLocalizationOptions"/>.</param>
+            <returns>The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder"/>.</returns>
+            <remarks>
+            Adding localization also adds support for views via
+            <see cref="M:Microsoft.Extensions.DependencyInjection.MvcViewFeaturesMvcCoreBuilderExtensions.AddViews(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)"/> and the Razor view engine
+            via <see cref="M:Microsoft.Extensions.DependencyInjection.MvcRazorMvcCoreBuilderExtensions.AddRazorViewEngine(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)"/>.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MvcLocalizationMvcCoreBuilderExtensions.AddMvcLocalization(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder,System.Action{Microsoft.Extensions.Localization.LocalizationOptions},System.Action{Microsoft.AspNetCore.Mvc.DataAnnotations.MvcDataAnnotationsLocalizationOptions})">
+            <summary>
+            Adds MVC view and data annotations localization services to the application.
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder"/>.</param>
+            <param name="localizationOptionsSetupAction">An action to configure the
+            <see cref="T:Microsoft.Extensions.Localization.LocalizationOptions"/>.</param>
+            <param name="dataAnnotationsLocalizationOptionsSetupAction">An action to configure the
+            <see cref="T:Microsoft.AspNetCore.Mvc.DataAnnotations.MvcDataAnnotationsLocalizationOptions"/>.</param>
+            <returns>The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder"/>.</returns>
+            <remarks>
+            Adding localization also adds support for views via
+            <see cref="M:Microsoft.Extensions.DependencyInjection.MvcViewFeaturesMvcCoreBuilderExtensions.AddViews(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)"/> and the Razor view engine
+            via <see cref="M:Microsoft.Extensions.DependencyInjection.MvcRazorMvcCoreBuilderExtensions.AddRazorViewEngine(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)"/>.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MvcLocalizationMvcCoreBuilderExtensions.AddMvcLocalization(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder,Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat,System.Action{Microsoft.AspNetCore.Mvc.DataAnnotations.MvcDataAnnotationsLocalizationOptions})">
+            <summary>
+            Adds MVC view and data annotations localization services to the application.
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder"/>.</param>
+            <param name="format">The view format for localized views.</param>
+            <param name="dataAnnotationsLocalizationOptionsSetupAction">An action to configure the
+            <see cref="T:Microsoft.AspNetCore.Mvc.DataAnnotations.MvcDataAnnotationsLocalizationOptions"/>.</param>
+            <returns>The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder"/>.</returns>
+            <remarks>
+            Adding localization also adds support for views via
+            <see cref="M:Microsoft.Extensions.DependencyInjection.MvcViewFeaturesMvcCoreBuilderExtensions.AddViews(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)"/> and the Razor view engine
+            via <see cref="M:Microsoft.Extensions.DependencyInjection.MvcRazorMvcCoreBuilderExtensions.AddRazorViewEngine(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)"/>.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MvcLocalizationMvcCoreBuilderExtensions.AddMvcLocalization(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder,System.Action{Microsoft.Extensions.Localization.LocalizationOptions},Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat,System.Action{Microsoft.AspNetCore.Mvc.DataAnnotations.MvcDataAnnotationsLocalizationOptions})">
+            <summary>
+            Adds MVC view and data annotations localization services to the application.
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder"/>.</param>
+            <param name="localizationOptionsSetupAction">An action to configure
+            the <see cref="T:Microsoft.Extensions.Localization.LocalizationOptions"/>. Can be <c>null</c>.</param>
+            <param name="format">The view format for localized views.</param>
+            <param name="dataAnnotationsLocalizationOptionsSetupAction">An action to configure
+            the <see cref="T:Microsoft.AspNetCore.Mvc.DataAnnotations.MvcDataAnnotationsLocalizationOptions"/>. Can be <c>null</c>.</param>
+            <returns>The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder"/>.</returns>
             <remarks>
             Adding localization also adds support for views via
             <see cref="M:Microsoft.Extensions.DependencyInjection.MvcViewFeaturesMvcCoreBuilderExtensions.AddViews(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder)"/> and the Razor view engine
@@ -359,7 +453,7 @@
         </member>
         <member name="T:Microsoft.AspNetCore.Mvc.Localization.IHtmlLocalizer">
             <summary>
-            Represents a type that that does HTML-aware localization of strings, by HTML encoding arguments that are
+            Represents a type that does HTML-aware localization of strings, by HTML encoding arguments that are
             formatted in the resource string.
             </summary>
         </member>
@@ -478,7 +572,7 @@
         </member>
         <member name="P:Microsoft.AspNetCore.Mvc.Localization.LocalizedHtmlString.Value">
             <summary>
-            The string resource.
+            The original resource string, prior to formatting with any constructor arguments.
             </summary>
         </member>
         <member name="P:Microsoft.AspNetCore.Mvc.Localization.LocalizedHtmlString.IsResourceNotFound">
@@ -488,6 +582,26 @@
         </member>
         <member name="M:Microsoft.AspNetCore.Mvc.Localization.LocalizedHtmlString.WriteTo(System.IO.TextWriter,System.Text.Encodings.Web.HtmlEncoder)">
             <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNetCore.Mvc.Localization.Resources.NullStringLocalizer">
+            <summary>
+            Must call CreateStringLocalizer method before using this property.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Mvc.Localization.Resources.FormatNullStringLocalizer">
+            <summary>
+            Must call CreateStringLocalizer method before using this property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Mvc.Localization.Resources.NullStringLocalizerFactory">
+            <summary>
+            IStringLocalizerFactory is null. Must call other constructor overload to use this property.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Mvc.Localization.Resources.FormatNullStringLocalizerFactory">
+            <summary>
+            IStringLocalizerFactory is null. Must call other constructor overload to use this property.
+            </summary>
         </member>
         <member name="T:Microsoft.AspNetCore.Mvc.Localization.ViewLocalizer">
             <summary>
@@ -525,26 +639,6 @@
             Apply the specified <see cref="T:Microsoft.AspNetCore.Mvc.Rendering.ViewContext"/>.
             </summary>
             <param name="viewContext">The <see cref="T:Microsoft.AspNetCore.Mvc.Rendering.ViewContext"/>.</param>
-        </member>
-        <member name="P:Microsoft.AspNetCore.Mvc.Localization.Resources.NullStringLocalizer">
-            <summary>
-            Must call CreateStringLocalizer method before using this property.
-            </summary>
-        </member>
-        <member name="M:Microsoft.AspNetCore.Mvc.Localization.Resources.FormatNullStringLocalizer">
-            <summary>
-            Must call CreateStringLocalizer method before using this property.
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNetCore.Mvc.Localization.Resources.NullStringLocalizerFactory">
-            <summary>
-            IStringLocalizerFactory is null. Must call other constructor overload to use this property.
-            </summary>
-        </member>
-        <member name="M:Microsoft.AspNetCore.Mvc.Localization.Resources.FormatNullStringLocalizerFactory">
-            <summary>
-            IStringLocalizerFactory is null. Must call other constructor overload to use this property.
-            </summary>
         </member>
     </members>
 </doc>

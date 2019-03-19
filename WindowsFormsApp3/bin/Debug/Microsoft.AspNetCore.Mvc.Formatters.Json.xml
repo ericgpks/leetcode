@@ -39,6 +39,141 @@
             <param name="builder">The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcBuilder"/>.</param>
             <param name="setupAction">The <see cref="T:Microsoft.AspNetCore.Mvc.MvcJsonOptions"/> which need to be configured.</param>
         </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MvcJsonMvcCoreBuilderExtensions.AddJsonOptions(Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder,System.Action{Microsoft.AspNetCore.Mvc.MvcJsonOptions})">
+            <summary>
+            Adds configuration of <see cref="T:Microsoft.AspNetCore.Mvc.MvcJsonOptions"/> for the application.
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder"/>.</param>
+            <param name="setupAction">The <see cref="T:Microsoft.AspNetCore.Mvc.MvcJsonOptions"/> which need to be configured.</param>
+            <returns>The <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcCoreBuilder"/>.</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MvcJsonOptionsExtensions.UseCamelCasing(Microsoft.AspNetCore.Mvc.MvcJsonOptions,System.Boolean)">
+            <summary>
+            Configures the casing behavior of JSON serialization to use camel case for property names,
+            and optionally for dynamic types and dictionary keys.
+            </summary>
+            <remarks>
+            This method modifies <see cref="P:Newtonsoft.Json.JsonSerializerSettings.ContractResolver"/>.
+            </remarks>
+            <param name="options"><see cref="T:Microsoft.AspNetCore.Mvc.MvcJsonOptions"/></param>
+            <param name="processDictionaryKeys">If true will camel case dictionary keys and properties of dynamic objects.</param>
+            <returns><see cref="T:Microsoft.AspNetCore.Mvc.MvcJsonOptions"/> with camel case settings.</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MvcJsonOptionsExtensions.UseMemberCasing(Microsoft.AspNetCore.Mvc.MvcJsonOptions)">
+            <summary>
+            Configures the casing behavior of JSON serialization to use the member's casing for property names,
+            properties of dynamic types, and dictionary keys.
+            </summary>
+            <remarks>
+            This method modifies <see cref="P:Newtonsoft.Json.JsonSerializerSettings.ContractResolver"/>.
+            </remarks>
+            <param name="options"><see cref="T:Microsoft.AspNetCore.Mvc.MvcJsonOptions"/></param>
+            <returns><see cref="T:Microsoft.AspNetCore.Mvc.MvcJsonOptions"/> with member casing settings.</returns>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Mvc.Formatters.Json.Internal.JsonResultExecutor">
+            <summary>
+            Executes a <see cref="T:Microsoft.AspNetCore.Mvc.JsonResult"/> to write to the response.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Mvc.Formatters.Json.Internal.JsonResultExecutor.#ctor(Microsoft.AspNetCore.Mvc.Infrastructure.IHttpResponseStreamWriterFactory,Microsoft.Extensions.Logging.ILogger{Microsoft.AspNetCore.Mvc.Formatters.Json.Internal.JsonResultExecutor},Microsoft.Extensions.Options.IOptions{Microsoft.AspNetCore.Mvc.MvcJsonOptions},System.Buffers.ArrayPool{System.Char})">
+            <summary>
+            Creates a new <see cref="T:Microsoft.AspNetCore.Mvc.Formatters.Json.Internal.JsonResultExecutor"/>.
+            </summary>
+            <param name="writerFactory">The <see cref="T:Microsoft.AspNetCore.Mvc.Infrastructure.IHttpResponseStreamWriterFactory"/>.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/>.</param>
+            <param name="options">The <see cref="T:Microsoft.Extensions.Options.IOptions`1"/>.</param>
+            <param name="charPool">The <see cref="T:System.Buffers.ArrayPool`1"/> for creating <see cref="T:char[]"/> buffers.</param>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Mvc.Formatters.Json.Internal.JsonResultExecutor.Logger">
+            <summary>
+            Gets the <see cref="T:Microsoft.Extensions.Logging.ILogger"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Mvc.Formatters.Json.Internal.JsonResultExecutor.Options">
+            <summary>
+            Gets the <see cref="T:Microsoft.AspNetCore.Mvc.MvcJsonOptions"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Mvc.Formatters.Json.Internal.JsonResultExecutor.WriterFactory">
+            <summary>
+            Gets the <see cref="T:Microsoft.AspNetCore.Mvc.Infrastructure.IHttpResponseStreamWriterFactory"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Mvc.Formatters.Json.Internal.JsonResultExecutor.ExecuteAsync(Microsoft.AspNetCore.Mvc.ActionContext,Microsoft.AspNetCore.Mvc.JsonResult)">
+            <summary>
+            Executes the <see cref="T:Microsoft.AspNetCore.Mvc.JsonResult"/> and writes the response.
+            </summary>
+            <param name="context">The <see cref="T:Microsoft.AspNetCore.Mvc.ActionContext"/>.</param>
+            <param name="result">The <see cref="T:Microsoft.AspNetCore.Mvc.JsonResult"/>.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> which will complete when writing has completed.</returns>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Mvc.Formatters.Json.Internal.JsonSerializerObjectPolicy">
+            <summary>
+            <see cref="T:Microsoft.Extensions.ObjectPool.IPooledObjectPolicy`1"/> for <see cref="T:Newtonsoft.Json.JsonSerializer"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Mvc.Formatters.Json.Internal.JsonSerializerObjectPolicy.#ctor(Newtonsoft.Json.JsonSerializerSettings)">
+            <summary>
+            Initializes a new instance of <see cref="T:Microsoft.AspNetCore.Mvc.Formatters.Json.Internal.JsonSerializerObjectPolicy"/>.
+            </summary>
+            <param name="serializerSettings">The <see cref="T:Newtonsoft.Json.JsonSerializerSettings"/> used to instantiate
+            <see cref="T:Newtonsoft.Json.JsonSerializer"/> instances.</param>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Mvc.Formatters.Json.Internal.JsonSerializerObjectPolicy.Create">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNetCore.Mvc.Formatters.Json.Internal.JsonSerializerObjectPolicy.Return(Newtonsoft.Json.JsonSerializer)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNetCore.Mvc.Formatters.Json.Internal.MvcJsonMvcOptionsSetup">
+            <summary>
+            Sets up JSON formatter options for <see cref="T:Microsoft.AspNetCore.Mvc.MvcOptions"/>.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Mvc.Formatters.Json.JsonPatchOperationsArrayProvider">
+            <summary>
+            Implements a provider of <see cref="T:Microsoft.AspNetCore.Mvc.ApiExplorer.ApiDescription"/> to change parameters of 
+            type <see cref="T:Microsoft.AspNetCore.JsonPatch.IJsonPatchDocument"/> to an array of <see cref="T:Microsoft.AspNetCore.JsonPatch.Operations.Operation"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Mvc.Formatters.Json.JsonPatchOperationsArrayProvider.#ctor(Microsoft.AspNetCore.Mvc.ModelBinding.IModelMetadataProvider)">
+            <summary>
+            Creates a new instance of <see cref="T:Microsoft.AspNetCore.Mvc.Formatters.Json.JsonPatchOperationsArrayProvider"/>.
+            </summary>        
+            <param name="modelMetadataProvider">The <see cref="T:Microsoft.AspNetCore.Mvc.ModelBinding.IModelMetadataProvider"/>.</param>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Mvc.Formatters.Json.JsonPatchOperationsArrayProvider.Order">
+            <inheritdoc />
+            <remarks>
+            The order -999 ensures that this provider is executed right after the <c>Microsoft.AspNetCore.Mvc.ApiExplorer.DefaultApiDescriptionProvider</c>.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Mvc.Formatters.Json.JsonPatchOperationsArrayProvider.OnProvidersExecuting(Microsoft.AspNetCore.Mvc.ApiExplorer.ApiDescriptionProviderContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNetCore.Mvc.Formatters.Json.JsonPatchOperationsArrayProvider.OnProvidersExecuted(Microsoft.AspNetCore.Mvc.ApiExplorer.ApiDescriptionProviderContext)">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNetCore.Mvc.Formatters.Json.Resources.ContractResolverCannotBeNull">
+            <summary>
+            {0} cannot be null.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Mvc.Formatters.Json.Resources.FormatContractResolverCannotBeNull(System.Object)">
+            <summary>
+            {0} cannot be null.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Mvc.Formatters.Json.Resources.InvalidContractResolverForJsonCasingConfiguration">
+            <summary>
+            Cannot configure JSON casing behavior on '{0}' contract resolver. The supported contract resolver is {1}.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Mvc.Formatters.Json.Resources.FormatInvalidContractResolverForJsonCasingConfiguration(System.Object,System.Object)">
+            <summary>
+            Cannot configure JSON casing behavior on '{0}' contract resolver. The supported contract resolver is {1}.
+            </summary>
+        </member>
         <member name="T:Microsoft.AspNetCore.Mvc.Formatters.JsonInputFormatter">
             <summary>
             A <see cref="T:Microsoft.AspNetCore.Mvc.Formatters.TextInputFormatter"/> for JSON content.
@@ -56,6 +191,53 @@
             </param>
             <param name="charPool">The <see cref="T:System.Buffers.ArrayPool`1"/>.</param>
             <param name="objectPoolProvider">The <see cref="T:Microsoft.Extensions.ObjectPool.ObjectPoolProvider"/>.</param>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Mvc.Formatters.JsonInputFormatter.#ctor(Microsoft.Extensions.Logging.ILogger,Newtonsoft.Json.JsonSerializerSettings,System.Buffers.ArrayPool{System.Char},Microsoft.Extensions.ObjectPool.ObjectPoolProvider,System.Boolean)">
+            <summary>
+            Initializes a new instance of <see cref="T:Microsoft.AspNetCore.Mvc.Formatters.JsonInputFormatter"/>.
+            </summary>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger"/>.</param>
+            <param name="serializerSettings">
+            The <see cref="T:Newtonsoft.Json.JsonSerializerSettings"/>. Should be either the application-wide settings
+            (<see cref="P:Microsoft.AspNetCore.Mvc.MvcJsonOptions.SerializerSettings"/>) or an instance
+            <see cref="M:Microsoft.AspNetCore.Mvc.Formatters.JsonSerializerSettingsProvider.CreateSerializerSettings"/> initially returned.
+            </param>
+            <param name="charPool">The <see cref="T:System.Buffers.ArrayPool`1"/>.</param>
+            <param name="objectPoolProvider">The <see cref="T:Microsoft.Extensions.ObjectPool.ObjectPoolProvider"/>.</param>
+            <param name="suppressInputFormatterBuffering">Flag to buffer entire request body before deserializing it.</param>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Mvc.Formatters.JsonInputFormatter.#ctor(Microsoft.Extensions.Logging.ILogger,Newtonsoft.Json.JsonSerializerSettings,System.Buffers.ArrayPool{System.Char},Microsoft.Extensions.ObjectPool.ObjectPoolProvider,System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new instance of <see cref="T:Microsoft.AspNetCore.Mvc.Formatters.JsonInputFormatter"/>.
+            </summary>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger"/>.</param>
+            <param name="serializerSettings">
+            The <see cref="T:Newtonsoft.Json.JsonSerializerSettings"/>. Should be either the application-wide settings
+            (<see cref="P:Microsoft.AspNetCore.Mvc.MvcJsonOptions.SerializerSettings"/>) or an instance
+            <see cref="M:Microsoft.AspNetCore.Mvc.Formatters.JsonSerializerSettingsProvider.CreateSerializerSettings"/> initially returned.
+            </param>
+            <param name="charPool">The <see cref="T:System.Buffers.ArrayPool`1"/>.</param>
+            <param name="objectPoolProvider">The <see cref="T:Microsoft.Extensions.ObjectPool.ObjectPoolProvider"/>.</param>
+            <param name="suppressInputFormatterBuffering">Flag to buffer entire request body before deserializing it.</param>
+            <param name="allowInputFormatterExceptionMessages">If <see langword="true"/>, JSON deserialization exception messages will replaced by a generic message in model state.</param>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Mvc.Formatters.JsonInputFormatter.#ctor(Microsoft.Extensions.Logging.ILogger,Newtonsoft.Json.JsonSerializerSettings,System.Buffers.ArrayPool{System.Char},Microsoft.Extensions.ObjectPool.ObjectPoolProvider,Microsoft.AspNetCore.Mvc.MvcOptions,Microsoft.AspNetCore.Mvc.MvcJsonOptions)">
+            <summary>
+            Initializes a new instance of <see cref="T:Microsoft.AspNetCore.Mvc.Formatters.JsonInputFormatter"/>.
+            </summary>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger"/>.</param>
+            <param name="serializerSettings">
+            The <see cref="T:Newtonsoft.Json.JsonSerializerSettings"/>. Should be either the application-wide settings
+            (<see cref="P:Microsoft.AspNetCore.Mvc.MvcJsonOptions.SerializerSettings"/>) or an instance
+            <see cref="M:Microsoft.AspNetCore.Mvc.Formatters.JsonSerializerSettingsProvider.CreateSerializerSettings"/> initially returned.
+            </param>
+            <param name="charPool">The <see cref="T:System.Buffers.ArrayPool`1"/>.</param>
+            <param name="objectPoolProvider">The <see cref="T:Microsoft.Extensions.ObjectPool.ObjectPoolProvider"/>.</param>
+            <param name="options">The <see cref="T:Microsoft.AspNetCore.Mvc.MvcOptions"/>.</param>
+            <param name="jsonOptions">The <see cref="T:Microsoft.AspNetCore.Mvc.MvcJsonOptions"/>.</param>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Mvc.Formatters.JsonInputFormatter.ExceptionPolicy">
+            <inheritdoc />
         </member>
         <member name="P:Microsoft.AspNetCore.Mvc.Formatters.JsonInputFormatter.SerializerSettings">
             <summary>
@@ -114,6 +296,15 @@
             <see cref="T:Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter"/> has been used will have no effect.
             </remarks>
         </member>
+        <member name="P:Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter.PublicSerializerSettings">
+            <summary>
+            Gets the <see cref="T:Newtonsoft.Json.JsonSerializerSettings"/> used to configure the <see cref="T:Newtonsoft.Json.JsonSerializer"/>.
+            </summary>
+            <remarks>
+            Any modifications to the <see cref="T:Newtonsoft.Json.JsonSerializerSettings"/> object after this
+            <see cref="T:Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter"/> has been used will have no effect.
+            </remarks>
+        </member>
         <member name="M:Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter.WriteObject(System.IO.TextWriter,System.Object)">
             <summary>
             Writes the given <paramref name="value"/> as JSON using the given
@@ -152,8 +343,58 @@
             The <see cref="T:Newtonsoft.Json.JsonSerializerSettings"/>. Should be either the application-wide settings
             (<see cref="P:Microsoft.AspNetCore.Mvc.MvcJsonOptions.SerializerSettings"/>) or an instance
             <see cref="M:Microsoft.AspNetCore.Mvc.Formatters.JsonSerializerSettingsProvider.CreateSerializerSettings"/> initially returned.
-            </param>/// <param name="charPool">The <see cref="T:System.Buffers.ArrayPool`1"/>.</param>
+            </param>
+            <param name="charPool">The <see cref="T:System.Buffers.ArrayPool`1"/>.</param>
             <param name="objectPoolProvider">The <see cref="T:Microsoft.Extensions.ObjectPool.ObjectPoolProvider"/>.</param>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Mvc.Formatters.JsonPatchInputFormatter.#ctor(Microsoft.Extensions.Logging.ILogger,Newtonsoft.Json.JsonSerializerSettings,System.Buffers.ArrayPool{System.Char},Microsoft.Extensions.ObjectPool.ObjectPoolProvider,System.Boolean)">
+            <summary>
+            Initializes a new <see cref="T:Microsoft.AspNetCore.Mvc.Formatters.JsonPatchInputFormatter"/> instance.
+            </summary>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger"/>.</param>
+            <param name="serializerSettings">
+            The <see cref="T:Newtonsoft.Json.JsonSerializerSettings"/>. Should be either the application-wide settings
+            (<see cref="P:Microsoft.AspNetCore.Mvc.MvcJsonOptions.SerializerSettings"/>) or an instance
+            <see cref="M:Microsoft.AspNetCore.Mvc.Formatters.JsonSerializerSettingsProvider.CreateSerializerSettings"/> initially returned.
+            </param>
+            <param name="charPool">The <see cref="T:System.Buffers.ArrayPool`1"/>.</param>
+            <param name="objectPoolProvider">The <see cref="T:Microsoft.Extensions.ObjectPool.ObjectPoolProvider"/>.</param>
+            <param name="suppressInputFormatterBuffering">Flag to buffer entire request body before deserializing it.</param>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Mvc.Formatters.JsonPatchInputFormatter.#ctor(Microsoft.Extensions.Logging.ILogger,Newtonsoft.Json.JsonSerializerSettings,System.Buffers.ArrayPool{System.Char},Microsoft.Extensions.ObjectPool.ObjectPoolProvider,System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new <see cref="T:Microsoft.AspNetCore.Mvc.Formatters.JsonPatchInputFormatter"/> instance.
+            </summary>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger"/>.</param>
+            <param name="serializerSettings">
+            The <see cref="T:Newtonsoft.Json.JsonSerializerSettings"/>. Should be either the application-wide settings
+            (<see cref="P:Microsoft.AspNetCore.Mvc.MvcJsonOptions.SerializerSettings"/>) or an instance
+            <see cref="M:Microsoft.AspNetCore.Mvc.Formatters.JsonSerializerSettingsProvider.CreateSerializerSettings"/> initially returned.
+            </param>
+            <param name="charPool">The <see cref="T:System.Buffers.ArrayPool`1"/>.</param>
+            <param name="objectPoolProvider">The <see cref="T:Microsoft.Extensions.ObjectPool.ObjectPoolProvider"/>.</param>
+            <param name="suppressInputFormatterBuffering">Flag to buffer entire request body before deserializing it.</param>
+            <param name="allowInputFormatterExceptionMessages">
+            If <see langword="false"/>, JSON deserialization exception messages will replaced by a generic message in model state.
+            </param>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Mvc.Formatters.JsonPatchInputFormatter.#ctor(Microsoft.Extensions.Logging.ILogger,Newtonsoft.Json.JsonSerializerSettings,System.Buffers.ArrayPool{System.Char},Microsoft.Extensions.ObjectPool.ObjectPoolProvider,Microsoft.AspNetCore.Mvc.MvcOptions,Microsoft.AspNetCore.Mvc.MvcJsonOptions)">
+            <summary>
+            Initializes a new <see cref="T:Microsoft.AspNetCore.Mvc.Formatters.JsonPatchInputFormatter"/> instance.
+            </summary>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger"/>.</param>
+            <param name="serializerSettings">
+            The <see cref="T:Newtonsoft.Json.JsonSerializerSettings"/>. Should be either the application-wide settings
+            (<see cref="P:Microsoft.AspNetCore.Mvc.MvcJsonOptions.SerializerSettings"/>) or an instance
+            <see cref="M:Microsoft.AspNetCore.Mvc.Formatters.JsonSerializerSettingsProvider.CreateSerializerSettings"/> initially returned.
+            </param>
+            <param name="charPool">The <see cref="T:System.Buffers.ArrayPool`1"/>.</param>
+            <param name="objectPoolProvider">The <see cref="T:Microsoft.Extensions.ObjectPool.ObjectPoolProvider"/>.</param>
+            <param name="options">The <see cref="T:Microsoft.AspNetCore.Mvc.MvcOptions"/>.</param>
+            <param name="jsonOptions">The <see cref="T:Microsoft.AspNetCore.Mvc.MvcJsonOptions"/>.</param>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Mvc.Formatters.JsonPatchInputFormatter.ExceptionPolicy">
+            <inheritdoc />
         </member>
         <member name="M:Microsoft.AspNetCore.Mvc.Formatters.JsonPatchInputFormatter.ReadRequestBodyAsync(Microsoft.AspNetCore.Mvc.Formatters.InputFormatterContext,System.Text.Encoding)">
             <inheritdoc />
@@ -171,75 +412,6 @@
             Creates default <see cref="T:Newtonsoft.Json.JsonSerializerSettings"/>.
             </summary>
             <returns>Default <see cref="T:Newtonsoft.Json.JsonSerializerSettings"/>.</returns>
-        </member>
-        <member name="T:Microsoft.AspNetCore.Mvc.Formatters.Json.Internal.JsonResultExecutor">
-            <summary>
-            Executes a <see cref="T:Microsoft.AspNetCore.Mvc.JsonResult"/> to write to the response.
-            </summary>
-        </member>
-        <member name="M:Microsoft.AspNetCore.Mvc.Formatters.Json.Internal.JsonResultExecutor.#ctor(Microsoft.AspNetCore.Mvc.Internal.IHttpResponseStreamWriterFactory,Microsoft.Extensions.Logging.ILogger{Microsoft.AspNetCore.Mvc.Formatters.Json.Internal.JsonResultExecutor},Microsoft.Extensions.Options.IOptions{Microsoft.AspNetCore.Mvc.MvcJsonOptions},System.Buffers.ArrayPool{System.Char})">
-            <summary>
-            Creates a new <see cref="T:Microsoft.AspNetCore.Mvc.Formatters.Json.Internal.JsonResultExecutor"/>.
-            </summary>
-            <param name="writerFactory">The <see cref="T:Microsoft.AspNetCore.Mvc.Internal.IHttpResponseStreamWriterFactory"/>.</param>
-            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/>.</param>
-            <param name="options">The <see cref="T:Microsoft.Extensions.Options.IOptions`1"/>.</param>
-            <param name="charPool">The <see cref="T:System.Buffers.ArrayPool`1"/> for creating <see cref="T:char[]"/> buffers.</param>
-        </member>
-        <member name="P:Microsoft.AspNetCore.Mvc.Formatters.Json.Internal.JsonResultExecutor.Logger">
-            <summary>
-            Gets the <see cref="T:Microsoft.Extensions.Logging.ILogger"/>.
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNetCore.Mvc.Formatters.Json.Internal.JsonResultExecutor.Options">
-            <summary>
-            Gets the <see cref="T:Microsoft.AspNetCore.Mvc.MvcJsonOptions"/>.
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNetCore.Mvc.Formatters.Json.Internal.JsonResultExecutor.WriterFactory">
-            <summary>
-            Gets the <see cref="T:Microsoft.AspNetCore.Mvc.Internal.IHttpResponseStreamWriterFactory"/>.
-            </summary>
-        </member>
-        <member name="M:Microsoft.AspNetCore.Mvc.Formatters.Json.Internal.JsonResultExecutor.ExecuteAsync(Microsoft.AspNetCore.Mvc.ActionContext,Microsoft.AspNetCore.Mvc.JsonResult)">
-            <summary>
-            Executes the <see cref="T:Microsoft.AspNetCore.Mvc.JsonResult"/> and writes the response.
-            </summary>
-            <param name="context">The <see cref="T:Microsoft.AspNetCore.Mvc.ActionContext"/>.</param>
-            <param name="result">The <see cref="T:Microsoft.AspNetCore.Mvc.JsonResult"/>.</param>
-            <returns>A <see cref="T:System.Threading.Tasks.Task"/> which will complete when writing has completed.</returns>
-        </member>
-        <member name="T:Microsoft.AspNetCore.Mvc.Formatters.Json.Internal.JsonSerializerObjectPolicy">
-            <summary>
-            <see cref="T:Microsoft.Extensions.ObjectPool.IPooledObjectPolicy`1"/> for <see cref="T:Newtonsoft.Json.JsonSerializer"/>.
-            </summary>
-        </member>
-        <member name="M:Microsoft.AspNetCore.Mvc.Formatters.Json.Internal.JsonSerializerObjectPolicy.#ctor(Newtonsoft.Json.JsonSerializerSettings)">
-            <summary>
-            Initializes a new instance of <see cref="T:Microsoft.AspNetCore.Mvc.Formatters.Json.Internal.JsonSerializerObjectPolicy"/>.
-            </summary>
-            <param name="serializerSettings">The <see cref="T:Newtonsoft.Json.JsonSerializerSettings"/> used to instantiate
-            <see cref="T:Newtonsoft.Json.JsonSerializer"/> instances.</param>
-        </member>
-        <member name="M:Microsoft.AspNetCore.Mvc.Formatters.Json.Internal.JsonSerializerObjectPolicy.Create">
-            <inheritdoc />
-        </member>
-        <member name="M:Microsoft.AspNetCore.Mvc.Formatters.Json.Internal.JsonSerializerObjectPolicy.Return(Newtonsoft.Json.JsonSerializer)">
-            <inheritdoc />
-        </member>
-        <member name="T:Microsoft.AspNetCore.Mvc.Formatters.Json.Internal.MvcJsonMvcOptionsSetup">
-            <summary>
-            Sets up JSON formatter options for <see cref="T:Microsoft.AspNetCore.Mvc.MvcOptions"/>.
-            </summary>
-        </member>
-        <member name="M:Microsoft.AspNetCore.Mvc.Formatters.Json.Internal.MvcJsonMvcOptionsSetup.#ctor(Microsoft.Extensions.Logging.ILoggerFactory,Microsoft.Extensions.Options.IOptions{Microsoft.AspNetCore.Mvc.MvcJsonOptions},System.Buffers.ArrayPool{System.Char},Microsoft.Extensions.ObjectPool.ObjectPoolProvider)">
-            <summary>
-            Intiailizes a new instance of <see cref="T:Microsoft.AspNetCore.Mvc.Formatters.Json.Internal.MvcJsonMvcOptionsSetup"/>.
-            </summary>
-            <param name="loggerFactory">The <see cref="T:Microsoft.Extensions.Logging.ILoggerFactory"/>.</param>
-            <param name="jsonOptions"></param>
-            <param name="charPool"></param>
-            <param name="objectPoolProvider"></param>
         </member>
         <member name="T:Microsoft.AspNetCore.Mvc.JsonPatchExtensions">
             <summary>
@@ -309,6 +481,42 @@
             <summary>
             Provides programmatic configuration for JSON in the MVC framework.
             </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Mvc.MvcJsonOptions.#ctor">
+            <summary>
+            Creates a new instance of <see cref="T:Microsoft.AspNetCore.Mvc.MvcJsonOptions"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Mvc.MvcJsonOptions.AllowInputFormatterExceptionMessages">
+            <summary>
+            Gets or sets a flag to determine whether error messages from JSON deserialization by the 
+            <see cref="T:Microsoft.AspNetCore.Mvc.Formatters.JsonInputFormatter"/> will be added to the <see cref="T:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary"/>. The default
+            value is <c>false</c>, meaning that a generic error message will be used instead.
+            </summary>
+            <remarks>
+            <para>
+            Error messages in the <see cref="T:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary"/> are often communicated to clients, either in HTML
+            or using <see cref="T:Microsoft.AspNetCore.Mvc.BadRequestObjectResult"/>. In effect, this setting controls whether clients can receive
+            detailed error messages about submitted JSON data.
+            </para>
+            <para>
+            This property is associated with a compatibility switch and can provide a different behavior depending on 
+            the configured compatibility version for the application. See <see cref="T:Microsoft.AspNetCore.Mvc.CompatibilityVersion"/> for 
+            guidance and examples of setting the application's compatibility version.
+            </para>
+            <para>
+            Configuring the desired of the value compatibility switch by calling this property's setter will take precedence
+            over the value implied by the application's <see cref="T:Microsoft.AspNetCore.Mvc.CompatibilityVersion"/>.
+            </para>
+            <para>
+            If the application's compatibility version is set to <see cref="F:Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_0"/> then
+            this setting will have value <c>false</c> unless explicitly configured.
+            </para>
+            <para>
+            If the application's compatibility version is set to <see cref="F:Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1"/> or
+            higher then this setting will have value <c>true</c> unless explicitly configured.
+            </para>
+            </remarks>
         </member>
         <member name="P:Microsoft.AspNetCore.Mvc.MvcJsonOptions.SerializerSettings">
             <summary>

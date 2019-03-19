@@ -99,19 +99,24 @@
                 Returns <c>null</c> if the provider couldn't determine a <see cref="T:Microsoft.AspNetCore.Localization.ProviderCultureResult"/>.
             </returns>
         </member>
+        <member name="P:Microsoft.AspNetCore.Localization.Resources.Exception_CulturesShouldNotBeEmpty">
+            <summary>
+            Please provide at least one culture.
+            </summary>
+        </member>
         <member name="T:Microsoft.AspNetCore.Localization.ProviderCultureResult">
             <summary>
             Details about the cultures obtained from <see cref="T:Microsoft.AspNetCore.Localization.IRequestCultureProvider"/>.
             </summary>
         </member>
-        <member name="M:Microsoft.AspNetCore.Localization.ProviderCultureResult.#ctor(System.String)">
+        <member name="M:Microsoft.AspNetCore.Localization.ProviderCultureResult.#ctor(Microsoft.Extensions.Primitives.StringSegment)">
             <summary>
             Creates a new <see cref="T:Microsoft.AspNetCore.Localization.ProviderCultureResult"/> object that has its <see cref="P:Microsoft.AspNetCore.Localization.ProviderCultureResult.Cultures"/> and
             <see cref="P:Microsoft.AspNetCore.Localization.ProviderCultureResult.UICultures"/> properties set to the same culture value.
             </summary>
             <param name="culture">The name of the culture to be used for formatting, text, i.e. language.</param>
         </member>
-        <member name="M:Microsoft.AspNetCore.Localization.ProviderCultureResult.#ctor(System.String,System.String)">
+        <member name="M:Microsoft.AspNetCore.Localization.ProviderCultureResult.#ctor(Microsoft.Extensions.Primitives.StringSegment,Microsoft.Extensions.Primitives.StringSegment)">
             <summary>
             Creates a new <see cref="T:Microsoft.AspNetCore.Localization.ProviderCultureResult"/> object has its <see cref="P:Microsoft.AspNetCore.Localization.ProviderCultureResult.Cultures"/> and
             <see cref="P:Microsoft.AspNetCore.Localization.ProviderCultureResult.UICultures"/> properties set to the respective culture values provided.
@@ -119,14 +124,14 @@
             <param name="culture">The name of the culture to be used for formatting.</param>
             <param name="uiCulture"> The name of the ui culture to be used for text, i.e. language.</param>
         </member>
-        <member name="M:Microsoft.AspNetCore.Localization.ProviderCultureResult.#ctor(System.Collections.Generic.IList{System.String})">
+        <member name="M:Microsoft.AspNetCore.Localization.ProviderCultureResult.#ctor(System.Collections.Generic.IList{Microsoft.Extensions.Primitives.StringSegment})">
             <summary>
             Creates a new <see cref="T:Microsoft.AspNetCore.Localization.ProviderCultureResult"/> object that has its <see cref="P:Microsoft.AspNetCore.Localization.ProviderCultureResult.Cultures"/> and
             <see cref="P:Microsoft.AspNetCore.Localization.ProviderCultureResult.UICultures"/> properties set to the same culture value.
             </summary>
             <param name="cultures">The list of cultures to be used for formatting, text, i.e. language.</param>
         </member>
-        <member name="M:Microsoft.AspNetCore.Localization.ProviderCultureResult.#ctor(System.Collections.Generic.IList{System.String},System.Collections.Generic.IList{System.String})">
+        <member name="M:Microsoft.AspNetCore.Localization.ProviderCultureResult.#ctor(System.Collections.Generic.IList{Microsoft.Extensions.Primitives.StringSegment},System.Collections.Generic.IList{Microsoft.Extensions.Primitives.StringSegment})">
             <summary>
             Creates a new <see cref="T:Microsoft.AspNetCore.Localization.ProviderCultureResult"/> object has its <see cref="P:Microsoft.AspNetCore.Localization.ProviderCultureResult.Cultures"/> and
             <see cref="P:Microsoft.AspNetCore.Localization.ProviderCultureResult.UICultures"/> properties set to the respective culture values provided.
@@ -233,6 +238,12 @@
             An abstract base class provider for determining the culture information of an <see cref="T:Microsoft.AspNetCore.Http.HttpRequest"/>.
             </summary>
         </member>
+        <member name="F:Microsoft.AspNetCore.Localization.RequestCultureProvider.NullProviderCultureResult">
+            <summary>
+            Result that indicates that this instance of <see cref="T:Microsoft.AspNetCore.Localization.RequestCultureProvider" /> could not determine the
+            request culture.
+            </summary>
+        </member>
         <member name="P:Microsoft.AspNetCore.Localization.RequestCultureProvider.Options">
             <summary>
             The current options for the <see cref="T:Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware"/>.
@@ -283,6 +294,30 @@
             <param name="app">The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/>.</param>
             <param name="options">The <see cref="T:Microsoft.AspNetCore.Builder.RequestLocalizationOptions"/> to configure the middleware with.</param>
             <returns>The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/>.</returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.ApplicationBuilderExtensions.UseRequestLocalization(Microsoft.AspNetCore.Builder.IApplicationBuilder,System.Action{Microsoft.AspNetCore.Builder.RequestLocalizationOptions})">
+            <summary>
+            Adds the <see cref="T:Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware"/> to automatically set culture information for
+            requests based on information provided by the client. 
+            </summary>
+            <param name="app">The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/>.</param>
+            <param name="optionsAction"></param>
+            <remarks>
+            This will going to instantiate a new <see cref="T:Microsoft.AspNetCore.Builder.RequestLocalizationOptions"/> that doesn't come from the services.
+            </remarks>
+            <returns>The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/>.</returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.ApplicationBuilderExtensions.UseRequestLocalization(Microsoft.AspNetCore.Builder.IApplicationBuilder,System.String[])">
+            <summary>
+            Adds the <see cref="T:Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware"/> to automatically set culture information for
+            requests based on information provided by the client. 
+            </summary>
+            <param name="app">The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/>.</param>
+            <param name="cultures">The culture names to be added by the application, which is represents both supported cultures and UI cultures.</param>
+            <returns>The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/>.</returns>
+            <remarks>
+            Note that the first culture is the default culture name.
+            </remarks>
         </member>
         <member name="T:Microsoft.AspNetCore.Builder.RequestLocalizationOptions">
             <summary>
@@ -359,6 +394,28 @@
                 <item><description><see cref="T:Microsoft.AspNetCore.Localization.AcceptLanguageHeaderRequestCultureProvider"/></description></item>
             </list>
             </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.RequestLocalizationOptions.AddSupportedCultures(System.String[])">
+            <summary>
+            Adds the set of the supported cultures by the application.
+            </summary>
+            <param name="cultures">The cultures to be added.</param>
+            <returns>The <see cref="T:Microsoft.AspNetCore.Builder.RequestLocalizationOptions"/>.</returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.RequestLocalizationOptions.AddSupportedUICultures(System.String[])">
+            <summary>
+            Adds the set of the supported UI cultures by the application.
+            </summary>
+            <param name="uiCultures">The UI cultures to be added.</param>
+            <returns>The <see cref="T:Microsoft.AspNetCore.Builder.RequestLocalizationOptions"/>.</returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.RequestLocalizationOptions.SetDefaultCulture(System.String)">
+            <summary>
+            Set the default culture which is used by the application when a supported culture could not be determined by
+            one of the configured <see cref="T:Microsoft.AspNetCore.Localization.IRequestCultureProvider"/>s.
+            </summary>
+            <param name="defaultCulture">The default culture to be set.</param>
+            <returns>The <see cref="T:Microsoft.AspNetCore.Builder.RequestLocalizationOptions"/>.</returns>
         </member>
     </members>
 </doc>

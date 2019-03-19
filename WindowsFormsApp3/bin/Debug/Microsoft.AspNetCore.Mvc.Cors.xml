@@ -16,6 +16,14 @@
             <param name="corsService">The <see cref="T:Microsoft.AspNetCore.Cors.Infrastructure.ICorsService"/>.</param>
             <param name="policyProvider">The <see cref="T:Microsoft.AspNetCore.Cors.Infrastructure.ICorsPolicyProvider"/>.</param>
         </member>
+        <member name="M:Microsoft.AspNetCore.Mvc.Cors.CorsAuthorizationFilter.#ctor(Microsoft.AspNetCore.Cors.Infrastructure.ICorsService,Microsoft.AspNetCore.Cors.Infrastructure.ICorsPolicyProvider,Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            Creates a new instance of <see cref="T:Microsoft.AspNetCore.Mvc.Cors.CorsAuthorizationFilter"/>.
+            </summary>
+            <param name="corsService">The <see cref="T:Microsoft.AspNetCore.Cors.Infrastructure.ICorsService"/>.</param>
+            <param name="policyProvider">The <see cref="T:Microsoft.AspNetCore.Cors.Infrastructure.ICorsPolicyProvider"/>.</param>
+            <param name="loggerFactory">The <see cref="T:Microsoft.Extensions.Logging.ILoggerFactory"/>.</param>
+        </member>
         <member name="P:Microsoft.AspNetCore.Mvc.Cors.CorsAuthorizationFilter.PolicyName">
             <summary>
             The policy name used to fetch a <see cref="T:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy"/>.

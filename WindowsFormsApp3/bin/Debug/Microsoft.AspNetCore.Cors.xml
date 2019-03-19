@@ -30,35 +30,20 @@
         <member name="T:Microsoft.AspNetCore.Cors.EnableCorsAttribute">
             <inheritdoc />
         </member>
+        <member name="M:Microsoft.AspNetCore.Cors.EnableCorsAttribute.#ctor">
+            <summary>
+            Creates a new instance of the <see cref="T:Microsoft.AspNetCore.Cors.EnableCorsAttribute"/> with the default policy
+            name defined by <see cref="P:Microsoft.AspNetCore.Cors.Infrastructure.CorsOptions.DefaultPolicyName"/>.
+            </summary>
+        </member>
         <member name="M:Microsoft.AspNetCore.Cors.EnableCorsAttribute.#ctor(System.String)">
             <summary>
-            Creates a new instance of the <see cref="T:Microsoft.AspNetCore.Cors.EnableCorsAttribute"/>.
+            Creates a new instance of the <see cref="T:Microsoft.AspNetCore.Cors.EnableCorsAttribute"/> with the supplied policy name.
             </summary>
             <param name="policyName">The name of the policy to be applied.</param>
         </member>
         <member name="P:Microsoft.AspNetCore.Cors.EnableCorsAttribute.PolicyName">
             <inheritdoc />
-        </member>
-        <member name="T:Microsoft.AspNetCore.Cors.Resources">
-            <summary>
-               A strongly-typed resource class, for looking up localized strings, etc.
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNetCore.Cors.Resources.ResourceManager">
-            <summary>
-               Returns the cached ResourceManager instance used by this class.
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNetCore.Cors.Resources.Culture">
-            <summary>
-               Overrides the current thread's CurrentUICulture property for all
-               resource lookups using this strongly typed resource class.
-            </summary>
-        </member>
-        <member name="P:Microsoft.AspNetCore.Cors.Resources.PreflightMaxAgeOutOfRange">
-            <summary>
-               Looks up a localized string similar to PreflightMaxAge must be greater than or equal to 0..
-            </summary>
         </member>
         <member name="T:Microsoft.AspNetCore.Cors.Infrastructure.CorsConstants">
             <summary>
@@ -122,8 +107,16 @@
         </member>
         <member name="T:Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware">
             <summary>
-            An ASP.NET middleware for handling CORS.
+            A middleware for handling CORS.
             </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.AspNetCore.Cors.Infrastructure.ICorsService,Microsoft.AspNetCore.Cors.Infrastructure.ICorsPolicyProvider)">
+            <summary>
+            Instantiates a new <see cref="T:Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware"/>.
+            </summary>
+            <param name="next">The next middleware in the pipeline.</param>
+            <param name="corsService">An instance of <see cref="T:Microsoft.AspNetCore.Cors.Infrastructure.ICorsService"/>.</param>
+            <param name="policyProvider">A policy provider which can get an <see cref="T:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy"/>.</param>
         </member>
         <member name="M:Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.AspNetCore.Cors.Infrastructure.ICorsService,Microsoft.AspNetCore.Cors.Infrastructure.ICorsPolicyProvider,System.String)">
             <summary>
@@ -142,6 +135,34 @@
             <param name="corsService">An instance of <see cref="T:Microsoft.AspNetCore.Cors.Infrastructure.ICorsService"/>.</param>
             <param name="policy">An instance of the <see cref="T:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy"/> which can be applied.</param>
         </member>
+        <member name="M:Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.AspNetCore.Cors.Infrastructure.ICorsService,Microsoft.AspNetCore.Cors.Infrastructure.ICorsPolicyProvider,Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            Instantiates a new <see cref="T:Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware"/>.
+            </summary>
+            <param name="next">The next middleware in the pipeline.</param>
+            <param name="corsService">An instance of <see cref="T:Microsoft.AspNetCore.Cors.Infrastructure.ICorsService"/>.</param>
+            <param name="policyProvider">A policy provider which can get an <see cref="T:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy"/>.</param>
+            <param name="loggerFactory">An instance of <see cref="T:Microsoft.Extensions.Logging.ILoggerFactory"/>.</param>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.AspNetCore.Cors.Infrastructure.ICorsService,Microsoft.AspNetCore.Cors.Infrastructure.ICorsPolicyProvider,Microsoft.Extensions.Logging.ILoggerFactory,System.String)">
+            <summary>
+            Instantiates a new <see cref="T:Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware"/>.
+            </summary>
+            <param name="next">The next middleware in the pipeline.</param>
+            <param name="corsService">An instance of <see cref="T:Microsoft.AspNetCore.Cors.Infrastructure.ICorsService"/>.</param>
+            <param name="policyProvider">A policy provider which can get an <see cref="T:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy"/>.</param>
+            <param name="loggerFactory">An instance of <see cref="T:Microsoft.Extensions.Logging.ILoggerFactory"/>.</param>
+            <param name="policyName">An optional name of the policy to be fetched.</param>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.AspNetCore.Cors.Infrastructure.ICorsService,Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy,Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            Instantiates a new <see cref="T:Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware"/>.
+            </summary>
+            <param name="next">The next middleware in the pipeline.</param>
+            <param name="corsService">An instance of <see cref="T:Microsoft.AspNetCore.Cors.Infrastructure.ICorsService"/>.</param>
+            <param name="policy">An instance of the <see cref="T:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy"/> which can be applied.</param>
+            <param name="loggerFactory">An instance of <see cref="T:Microsoft.Extensions.Logging.ILoggerFactory"/>.</param>
+        </member>
         <member name="M:Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext)">
             <inheritdoc />
         </member>
@@ -149,6 +170,18 @@
             <summary>
             Provides programmatic configuration for Cors.
             </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Cors.Infrastructure.CorsOptions.AddDefaultPolicy(Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy)">
+            <summary>
+            Adds a new policy and sets it as the default.
+            </summary>
+            <param name="policy">The <see cref="T:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy"/> policy to be added.</param>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Cors.Infrastructure.CorsOptions.AddDefaultPolicy(System.Action{Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder})">
+            <summary>
+            Adds a new policy and sets it as the default.
+            </summary>
+            <param name="configurePolicy">A delegate which can use a policy builder to build a policy.</param>
         </member>
         <member name="M:Microsoft.AspNetCore.Cors.Infrastructure.CorsOptions.AddPolicy(System.String,Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy)">
             <summary>
@@ -176,6 +209,11 @@
             Defines the policy for Cross-Origin requests based on the CORS specifications.
             </summary>
         </member>
+        <member name="M:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy.#ctor">
+            <summary>
+            Default constructor for a CorsPolicy.
+            </summary>
+        </member>
         <member name="P:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy.AllowAnyHeader">
             <summary>
             Gets a value indicating if all headers are allowed.
@@ -189,6 +227,11 @@
         <member name="P:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy.AllowAnyOrigin">
             <summary>
             Gets a value indicating if all origins are allowed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy.IsOriginAllowed">
+            <summary>
+            Gets or sets a function which evaluates whether an origin is allowed.
             </summary>
         </member>
         <member name="P:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy.ExposedHeaders">
@@ -239,6 +282,7 @@
             Creates a new instance of the <see cref="T:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder"/>.
             </summary>
             <param name="origins">list of origins which can be added.</param>
+            <remarks> <see cref="M:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithOrigins(System.String[])"/> for details on normalizing the origin value.</remarks>
         </member>
         <member name="M:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.#ctor(Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy)">
             <summary>
@@ -251,58 +295,73 @@
             Adds the specified <paramref name="origins"/> to the policy.
             </summary>
             <param name="origins">The origins that are allowed.</param>
-            <returns>The current policy builder</returns>
+            <returns>The current policy builder.</returns>
+            <remarks>
+            This method normalizes the origin value prior to adding it to <see cref="P:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy.Origins"/> to match
+            the normalization performed by the browser on the value sent in the <c>ORIGIN</c> header.
+            <list type="bullet">
+            <item>
+            If the specified origin has an internationalized domain name (IDN), the punycoded value is used. If the origin
+            specifies a default port (e.g. 443 for HTTPS or 80 for HTTP), this will be dropped as part of normalization.
+            Finally, the scheme and punycoded host name are culture invariant lower cased before being added to the <see cref="P:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy.Origins"/>
+            collection.
+            </item>
+            <item>
+            For all other origins, normalization involves performing a culture invariant lower casing of the host name.
+            </item>
+            </list>
+            </remarks>
         </member>
         <member name="M:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithHeaders(System.String[])">
             <summary>
             Adds the specified <paramref name="headers"/> to the policy.
             </summary>
             <param name="headers">The headers which need to be allowed in the request.</param>
-            <returns>The current policy builder</returns>
+            <returns>The current policy builder.</returns>
         </member>
         <member name="M:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithExposedHeaders(System.String[])">
             <summary>
             Adds the specified <paramref name="exposedHeaders"/> to the policy.
             </summary>
             <param name="exposedHeaders">The headers which need to be exposed to the client.</param>
-            <returns>The current policy builder</returns>
+            <returns>The current policy builder.</returns>
         </member>
         <member name="M:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithMethods(System.String[])">
             <summary>
             Adds the specified <paramref name="methods"/> to the policy.
             </summary>
             <param name="methods">The methods which need to be added to the policy.</param>
-            <returns>The current policy builder</returns>
+            <returns>The current policy builder.</returns>
         </member>
         <member name="M:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowCredentials">
             <summary>
             Sets the policy to allow credentials.
             </summary>
-            <returns>The current policy builder</returns>
+            <returns>The current policy builder.</returns>
         </member>
         <member name="M:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.DisallowCredentials">
             <summary>
             Sets the policy to not allow credentials.
             </summary>
-            <returns>The current policy builder</returns>
+            <returns>The current policy builder.</returns>
         </member>
         <member name="M:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowAnyOrigin">
             <summary>
             Ensures that the policy allows any origin.
             </summary>
-            <returns>The current policy builder</returns>
+            <returns>The current policy builder.</returns>
         </member>
         <member name="M:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowAnyMethod">
             <summary>
             Ensures that the policy allows any method.
             </summary>
-            <returns>The current policy builder</returns>
+            <returns>The current policy builder.</returns>
         </member>
         <member name="M:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowAnyHeader">
             <summary>
             Ensures that the policy allows any header.
             </summary>
-            <returns>The current policy builder</returns>
+            <returns>The current policy builder.</returns>
         </member>
         <member name="M:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.SetPreflightMaxAge(System.TimeSpan)">
             <summary>
@@ -310,7 +369,22 @@
             </summary>
             <param name="preflightMaxAge">A positive <see cref="T:System.TimeSpan"/> indicating the time a preflight
             request can be cached.</param>
-            <returns></returns>
+            <returns>The current policy builder.</returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.SetIsOriginAllowed(System.Func{System.String,System.Boolean})">
+            <summary>
+            Sets the specified <paramref name="isOriginAllowed"/> for the underlying policy.
+            </summary>
+            <param name="isOriginAllowed">The function used by the policy to evaluate if an origin is allowed.</param>
+            <returns>The current policy builder.</returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.SetIsOriginAllowedToAllowWildcardSubdomains">
+            <summary>
+            Sets the <see cref="P:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy.IsOriginAllowed"/> property of the policy to be a function
+            that allows origins to match a configured wildcarded domain when evaluating if the 
+            origin is allowed.
+            </summary>
+            <returns>The current policy builder.</returns>
         </member>
         <member name="M:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.Build">
             <summary>
@@ -323,16 +397,27 @@
             Combines the given <paramref name="policy"/> to the existing properties in the builder.
             </summary>
             <param name="policy">The policy which needs to be combined.</param>
-            <returns>The current policy builder</returns>
+            <returns>The current policy builder.</returns>
         </member>
         <member name="T:Microsoft.AspNetCore.Cors.Infrastructure.CorsResult">
             <summary>
             Results returned by <see cref="T:Microsoft.AspNetCore.Cors.Infrastructure.ICorsService"/>.
             </summary>
         </member>
+        <member name="P:Microsoft.AspNetCore.Cors.Infrastructure.CorsResult.IsPreflightRequest">
+            <summary>
+            Gets or sets a value that determines if the current request is a CORS-preflight request.
+            </summary>
+        </member>
         <member name="P:Microsoft.AspNetCore.Cors.Infrastructure.CorsResult.AllowedOrigin">
             <summary>
             Gets or sets the allowed origin.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Cors.Infrastructure.CorsResult.IsOriginAllowed">
+            <summary>
+            Gets or sets a value that determines if the origin is allowed.
+            When <c>false</c>, no CORS headers should be sent.
             </summary>
         </member>
         <member name="P:Microsoft.AspNetCore.Cors.Infrastructure.CorsResult.SupportsCredentials">
@@ -383,6 +468,13 @@
             Creates a new instance of the <see cref="T:Microsoft.AspNetCore.Cors.Infrastructure.CorsService"/>.
             </summary>
             <param name="options">The option model representing <see cref="T:Microsoft.AspNetCore.Cors.Infrastructure.CorsOptions"/>.</param>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Cors.Infrastructure.CorsService.#ctor(Microsoft.Extensions.Options.IOptions{Microsoft.AspNetCore.Cors.Infrastructure.CorsOptions},Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            Creates a new instance of the <see cref="T:Microsoft.AspNetCore.Cors.Infrastructure.CorsService"/>.
+            </summary>
+            <param name="options">The option model representing <see cref="T:Microsoft.AspNetCore.Cors.Infrastructure.CorsOptions"/>.</param>
+            <param name="loggerFactory">The <see cref="T:Microsoft.Extensions.Logging.ILoggerFactory"/>.</param>
         </member>
         <member name="M:Microsoft.AspNetCore.Cors.Infrastructure.CorsService.EvaluatePolicy(Microsoft.AspNetCore.Http.HttpContext,System.String)">
             <summary>
@@ -461,10 +553,38 @@
             The name of the policy which needs to be applied.
             </summary>
         </member>
+        <member name="T:Microsoft.AspNetCore.Cors.Resources">
+            <summary>
+               A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Cors.Resources.ResourceManager">
+            <summary>
+               Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Cors.Resources.Culture">
+            <summary>
+               Overrides the current thread's CurrentUICulture property for all
+               resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Cors.Resources.PreflightMaxAgeOutOfRange">
+            <summary>
+               Looks up a localized string similar to PreflightMaxAge must be greater than or equal to 0..
+            </summary>
+        </member>
         <member name="T:Microsoft.AspNetCore.Builder.CorsMiddlewareExtensions">
             <summary>
             The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/> extensions for adding CORS middleware support.
             </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.CorsMiddlewareExtensions.UseCors(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Adds a CORS middleware to your web application pipeline to allow cross domain requests.
+            </summary>
+            <param name="app">The IApplicationBuilder passed to your Configure method</param>
+            <returns>The original app parameter</returns>
         </member>
         <member name="M:Microsoft.AspNetCore.Builder.CorsMiddlewareExtensions.UseCors(Microsoft.AspNetCore.Builder.IApplicationBuilder,System.String)">
             <summary>

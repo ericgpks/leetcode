@@ -17,7 +17,8 @@ namespace WindowsFormsApp3
         {
             InitializeComponent();
         }
-
+        
+        // leetcode NO.1
         private void button1_Click (object sender, EventArgs e)
         {
             int[] nums = { 2, 7, 11, 15 };
@@ -43,6 +44,7 @@ namespace WindowsFormsApp3
             return answer;
         }
 
+        // leetcode No.7
         private void button2_Click (object sender, EventArgs e)
         {
             int a = 120;
@@ -76,6 +78,28 @@ namespace WindowsFormsApp3
                 c = c * (-1);
             }
             return c;
+        }
+
+        // leetcode No.9
+        private void button3_Click (object sender, EventArgs e)
+        {
+            IsPalindrome(10);
+        }
+
+        private bool IsPalindrome (int x)
+        {
+            bool answer = false;
+            string str = x.ToString();
+            string a = String.Empty;
+            for (int count = str.Length; count > 0; count--)
+            {
+                a += str[count - 1].ToString();
+            }
+            if(str == a)
+            {
+                answer = true;
+            }
+            return answer;
         }
     }
 }
