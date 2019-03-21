@@ -101,5 +101,123 @@ namespace WindowsFormsApp3
             }
             return answer;
         }
+
+        /// <summary>
+        /// leetcode No.13
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button4_Click (object sender, EventArgs e)
+        {
+            string s = "MCMXCIV";
+            RomanToInt(s);
+        }
+
+        /// <summary>
+        /// RomanToInt
+        /// </summary>
+        /// <param name="s">string</param>
+        /// <returns>int</returns>
+        private int RomanToInt(string s)
+        {
+            int answer = 0;
+            char previous = 'a';
+            // 1文字ごと回す
+            for(int count = 0; count < s.Length; count++)
+            {
+                // 1つ前の文字を照合
+                char current = s[count];
+                switch(current)
+                {
+                    // 今がI
+                    case 'I':
+                        answer++;
+                        break;
+                    // 今がV
+                    case 'V':
+                    // 今がVで1つ前がIの場合4
+                        if (previous == 'I')
+                        {
+                            answer -= 1;
+                            answer += 4;
+                        }
+                        else
+                        {
+                            answer += 5;
+                        }
+                        break;
+                    // 今がX
+                    case 'X':
+                        // 今がXで1つ前がIの場合9
+                        if (previous == 'I')
+                        {
+                            answer -= 1;
+                            answer += 9;
+                        }
+                        else
+                        {
+                            answer += 10;
+                        }
+                        break;
+                    // 今がL
+                    case 'L':
+                        // 今がLで1つ前がXの場合40
+                        if (previous == 'X')
+                        {
+                            answer -= 10;
+                            answer += 40;
+                        }
+                        else
+                        {
+                            answer += 50;
+                        }
+                        break;
+                    // 今がC
+                    case 'C':
+                        // 今がCで1つ前がXの場合90
+                        if(previous == 'X')
+                        {
+                            answer -= 10;
+                            answer += 90;
+                        }
+                        else
+                        {
+                            answer += 100;
+                        }
+                        break;
+                    // 今がD
+                    case 'D':
+                        // 今がDで1つ前がCの場合400
+                        if (previous == 'C')
+                        {
+                            answer -= 100;
+                            answer += 400;
+                        }
+                        else
+                        {
+                            answer += 500;
+                        }
+                        break;
+                    // 今がM
+                    case 'M':
+                        // 今がMで1つ前がCの場合900
+                        if (previous == 'C')
+                        {
+                            answer -= 100;
+                            answer += 900;
+                        }
+                        else
+                        {
+                            answer += 1000;
+                        }
+                        break;
+                }
+                // 現在の文字を保存
+                previous = current;
+            }
+            return answer;
+        }
+
+        
     }
 }
