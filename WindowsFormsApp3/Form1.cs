@@ -218,6 +218,53 @@ namespace WindowsFormsApp3
             return answer;
         }
 
+
+        /// <summary>
+        /// leetcode No.14
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button5_Click (object sender, EventArgs e)
+        {
+            string[] strs = { "flower", "flow", "flight" };
+            LongestCommonPrefix(strs);
+        }
+
+        /// <summary>
+        /// LongestCommonPrefix
+        /// </summary>
+        /// <param name="strs">string[]</param>
+        /// <returns>string</returns>
+        private string LongestCommonPrefix(string[] strs)
+        {
+            string answer = "";
+            // 一番目の文字数で回す
+            for(int outerCount = 0; outerCount < strs[0].Length; outerCount++)
+            {   
+                string current0 = strs[0][outerCount].ToString();
+                bool flag = true;
+                // 配列の数で回す
+                for(int innerCount = 1; innerCount < strs.Length; innerCount++)
+                {
+                    if(current0 != strs[innerCount][outerCount].ToString())
+                    {
+                        flag = false;
+                        break;
+                    }
+                }
+                if(flag == true)
+                {
+                    answer += current0;
+                }
+                else
+                {
+                    break;
+                }
+
+            }
+            return answer;
+        }
+
         
     }
 }
