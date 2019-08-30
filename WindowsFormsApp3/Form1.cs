@@ -265,6 +265,46 @@ namespace WindowsFormsApp3
             return answer;
         }
 
-        
+        //private bool IsSymmetric(TreeNode root)
+        //{
+
+        //}
+
+        //private void button6_Click (object sender, EventArgs e)
+        //{
+
+        //}
+
+        //private ListNode MargeTwoLists(ListNode l1, ListNode l2)
+        //{
+        //    var res = new ListNode(0);
+        //    var head = res;
+
+        //    while (l1 != null && l2 != null)
+        //    {
+        //        res.next = new ListNode(0);
+        //        res = res.next;
+
+        //        if (l1.val <= l2.val)
+        //        {
+        //            res.val = l1.val;
+        //            l1 = l1.next;
+        //        }
+        //        else
+        //        {
+        //            res.val = l2.val;
+        //            l2 = l2.next;
+        //        }
+        //    }
+
+        //    if (l1 != null)
+        //    {
+        //        res.next = l1;
+        //    }
+        //    else
+        //    {
+        //        res.next = l2;
+        //    }
+        //}
     }
 }
